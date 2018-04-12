@@ -20,8 +20,7 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser, questions } , ownProps ) {
-  const { id } = ownProps.match.params;
+function mapStateToProps ({ authedUser, questions } , { id } ) {
   const question = questions[id];
 
   return {

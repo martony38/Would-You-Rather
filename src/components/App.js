@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   render() {
-    const { authedUser } = this.props;
+    const { authedUser, questionIds } = this.props;
 
     return (
       <BrowserRouter>
@@ -28,10 +28,16 @@ class App extends Component {
                 <Nav />
                 <UserInfo id={authedUser}/>
                 <Switch>
-                  <Route path='/' exact component={QuestionList} />
-                  <Route path='/questions/:id' component={Question} />
-                  <Route path='/add' component={NewQuestion} />
-                  <Route path='/leaderboard' component={Leaderboard} />
+                  <Route exact path='/' component={QuestionList} />
+                  <Route exact path='/add' component={NewQuestion} />
+                  <Route exact path='/leaderboard' component={Leaderboard} />
+                  <Route exact path='/questions/:id' render={({ match }) => {
+                    if (questionIds.includes(match.params.id)) {
+                      return <Question id={match.params.id}/>
+                    } else {
+                      return <NoMatch />
+                    }
+                  }} />
                   <Route component={NoMatch} />
                 </Switch>
               </div>
@@ -42,9 +48,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, questions }) {
   return {
-    authedUser
+    authedUser,
+    questionIds: Object.keys(questions)
   };
 }
 
