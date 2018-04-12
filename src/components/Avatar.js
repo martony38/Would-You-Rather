@@ -20,7 +20,7 @@ class Avatar extends Component {
   }
 }
 
-function mapStateToProps ({ users } , { id } ) {
+function mapStateToProps ({ users } , { id }) {
   const user = users[id];
 
   return {

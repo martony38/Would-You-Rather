@@ -1,4 +1,11 @@
 let users = {
+  wouldyouratherapp: {
+    id: 'wouldyouratherapp',
+    name: 'Would You Rather App',
+    avatarURL: "",
+    answers: {},
+    questions: ['04d7hff20vs7mm0cucr9tyd']
+  },
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
@@ -17,7 +24,7 @@ let users = {
     avatarURL: "",
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
-      "xj352vofupe1dqz9emx13r": 'optionTwo',
+      "xj352vofupe1dqz9emx13r": 'optionTwo'
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
@@ -35,6 +42,19 @@ let users = {
 }
 
 let questions = {
+  "04d7hff20vs7mm0cucr9tyd": {
+    id: '04d7hff20vs7mm0cucr9tyd',
+    author: 'wouldyouratherapp',
+    timestamp: 1523542358144,
+    optionOne: {
+      votes: [],
+      text: 'see a 404 error page',
+    },
+    optionTwo: {
+      votes: [],
+      text: 'be silently redirected to the homepage'
+    }
+  },
   "8xf0y6ziyjabvozdd253nd": {
     id: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
