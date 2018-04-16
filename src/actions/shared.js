@@ -2,6 +2,7 @@ import { loginUser } from '../utils/api';
 import { receiveQuestions } from './questions';
 import { receiveUsers } from './users';
 import { setAuthedUser } from './authedUser';
+import { addNotice } from './notices';
 import { showLoading, hideLoading } from 'react-redux-loading';
 
 export function handleLogin(username, password) {
@@ -15,17 +16,15 @@ export function handleLogin(username, password) {
           dispatch(receiveUsers(users));
           dispatch(receiveQuestions(questions));
           dispatch(setAuthedUser(authedUser));
+          dispatch(addNotice('you are logged in', 'success'));
         } else {
-          // TODO: show info message to user
-          console.log('wrong username/password');
+          dispatch(addNotice('wrong username/password', 'danger'));
         }
       })
       .then(() => dispatch(hideLoading()))
       .catch((e) => {
         dispatch(hideLoading());
-
-        // TODO: show info message to user
-        console.log('There was an error. Try Again.');
+        dispatch(addNotice('There was an error. Try Again.', 'danger'));
       });
   }
 }

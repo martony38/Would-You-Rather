@@ -1,4 +1,5 @@
 import { logoutUser } from '../utils/api';
+import { addNotice } from './notices';
 
 export const SET_AUTHED_USER = 'SET_AUTHED_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
@@ -13,10 +14,12 @@ export function handleSignOutUser(id) {
   return (dispatch) => {
     // Logout user from fake remote server.
     return logoutUser(id)
-      .then(() => dispatch(signOutUser()))
+      .then(() => {
+        dispatch(signOutUser());
+        dispatch(addNotice('You are signed out.', 'success'));
+      })
       .catch((e) => {
-        // TODO: show info message to user
-        console.log('There was an error. Try Again.');
+        dispatch(addNotice('There was an error. Try Again.', 'danger'));
       });
   };
 };

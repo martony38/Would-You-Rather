@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import users from './users';
 import questions from './questions';
 import authedUser from './authedUser';
+import notices from './notices';
 import { loadingBarReducer } from 'react-redux-loading';
 import { LOGOUT_USER } from '../actions/authedUser';
 
@@ -9,6 +10,7 @@ const appReducer = combineReducers({
   authedUser,
   users,
   questions,
+  notices,
   loadingBar: loadingBarReducer
 });
 

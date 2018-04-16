@@ -1,5 +1,6 @@
 import { saveQuestion } from '../utils/api';
 import { saveQuestionAnswer } from '../utils/api';
+import { addNotice } from './notices';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
@@ -28,10 +29,12 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
       optionOneText,
       optionTwoText,
       author: authedUser
-    }).then((question) => dispatch(addQuestion(question)))
+    }).then((question) => {
+        dispatch(addQuestion(question));
+        dispatch(addNotice('Question added.', 'success'));
+      })
       .catch((e) => {
-        // TODO: show info message to user
-        console.log('There was an error. Try Again.');
+        dispatch(addNotice('There was an error. Try Again.', 'danger'));
       });
   };
 };
@@ -56,10 +59,12 @@ export function handleAnswerQuestion(qid, answer) {
       qid,
       answer,
       authedUser
-    }).then(() => dispatch(answerQuestion(qid, authedUser, answer)))
+    }).then(() => {
+        dispatch(answerQuestion(qid, authedUser, answer));
+        dispatch(addNotice('Question answered.', 'success'));
+      })
       .catch((e) => {
-        // TODO: show info message to user
-        console.log('There was an error. Try Again.');
+        dispatch(addNotice('There was an error. Try Again.', 'danger'));
       });
   };
 };

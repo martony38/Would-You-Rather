@@ -13,6 +13,7 @@ import PrivateRoute from './PrivateRoute';
 import CheckRoute from './CheckRoute';
 import Logout from './Logout';
 import NewUser from './NewUser';
+import NoticeList from './NoticeList';
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
               <UserInfo id={authedUser}/>
               <Logout />
             </Fragment>}
+          <NoticeList />
           <Switch>
             <PrivateRoute exact path='/' component={QuestionList} />
             <Route exact path='/login' component={Login} />
