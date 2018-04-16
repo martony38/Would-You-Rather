@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddUser } from '../actions/users';
-import { handleLogin } from '../actions/shared';
 import { Redirect } from 'react-router-dom';
 
 class NewUser extends Component {
@@ -21,8 +20,7 @@ class NewUser extends Component {
     const { name, username, password } = this.state;
     const { dispatch } = this.props;
 
-    dispatch(handleAddUser({ name, username, password}))
-      .then(() => dispatch(handleLogin(username, password)));
+    dispatch(handleAddUser({ name, username, password}));
   }
 
   render() {
