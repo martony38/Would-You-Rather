@@ -4,7 +4,8 @@ let users = {
     name: 'Would You Rather App',
     avatarURL: "",
     answers: {},
-    questions: ['04d7hff20vs7mm0cucr9tyd']
+    questions: ['04d7hff20vs7mm0cucr9tyd'],
+    password: 'password'
   },
   sarahedo: {
     id: 'sarahedo',
@@ -16,7 +17,8 @@ let users = {
       "am8ehyc8byjqgar0jgpub9": 'optionTwo',
       "loxhs1bqm25b708cmbf3g": 'optionTwo'
     },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
+    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9'],
+    password: 'password'
   },
   tylermcginnis: {
     id: 'tylermcginnis',
@@ -27,6 +29,7 @@ let users = {
       "xj352vofupe1dqz9emx13r": 'optionTwo'
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
+    password: 'password'
   },
   johndoe: {
     id: 'johndoe',
@@ -38,6 +41,7 @@ let users = {
       "6ni6ok3ym7mf1p33lnez": 'optionOne'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+    password: 'password'
   }
 }
 
@@ -211,3 +215,46 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     }, 500)
   })
 }
+
+// Mock authentication
+export function _checkCredentials(username, password) {
+  const user = Object.keys(users).includes(username)
+    ? users[username]
+    : false;
+  return user ? password === user.password : false;
+}
+
+function formatUser ({ username, name, password, avatar }) {
+  return {
+    id: username,
+    name,
+    password,
+    avatarURL: avatar || "",
+    answers: {},
+    questions: []
+  };
+}
+
+export function _saveUser(user) {
+  return new Promise((res, rej) => {
+    const formattedUser = formatUser(user);
+
+    setTimeout(() => {
+      users = {
+        ...users,
+        [formattedUser.id]: formattedUser
+      }
+
+      res(formattedUser)
+    }, 1000);
+  });
+};
+
+export function _logoutUser(id) {
+  return new Promise((res, rej) => {
+
+    setTimeout(() => {
+      res()
+    }, 500);
+  });
+};

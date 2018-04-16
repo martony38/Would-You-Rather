@@ -14,9 +14,12 @@ export default function Nav() {
         / Add a Question
       </NavLink>
 
-      {/* Link to test 404 page functionality */}
+      {/* Links to test 404 page functionality */}
       <NavLink to='/nowhere' activeClassName='active'>
         / Link to Nowhere
+      </NavLink>
+      <NavLink to='/questions/doesnotexist' activeClassName='active'>
+        / Link to non existing question
       </NavLink>
     </nav>
   );

@@ -3,9 +3,15 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Page404 from './Page404';
 
+const QUESTION_404 = '04d7hff20vs7mm0cucr9tyd';
+
 class NoMatch extends Component {
   render() {
-    const { id, answered } = this.props;
+    const { id, answered, authenticated } = this.props;
+
+    if (!authenticated) {
+      return <Page404 />
+    }
 
     switch(answered) {
       case 'optionOne' :
@@ -19,13 +25,14 @@ class NoMatch extends Component {
 }
 
 function mapStateToProps ({ authedUser, questions }) {
-  const question = questions['04d7hff20vs7mm0cucr9tyd'];
+  const question = questions[QUESTION_404];
 
   return {
-    id: '04d7hff20vs7mm0cucr9tyd',
-    answered: question.optionOne.votes.includes(authedUser)
+    authenticated: authedUser !== null ? true : false,
+    id: QUESTION_404,
+    answered: question && question.optionOne.votes.includes(authedUser)
       ? 'optionOne'
-      : question.optionTwo.votes.includes(authedUser)
+      : question && question.optionTwo.votes.includes(authedUser)
         ? 'optionTwo'
         : null
   };

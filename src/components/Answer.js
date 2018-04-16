@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleAnswerQuestion } from '../actions/shared';
+import { handleAnswerQuestion } from '../actions/questions';
 
 class Answer extends Component {
   state = {
@@ -16,7 +16,7 @@ class Answer extends Component {
 
     const { dispatch, qid } = this.props;
 
-    dispatch(handleAnswerQuestion(qid, this.state.answer))
+    dispatch(handleAnswerQuestion(qid, this.state.answer));
   }
 
   render() {

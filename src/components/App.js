@@ -1,57 +1,51 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { handleInitialData } from '../actions/shared';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import QuestionList from './QuestionList';
 import LoadingBar from 'react-redux-loading';
 import Nav from './Nav';
 import UserInfo from './UserInfo';
-import Question from './Question';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
 import NoMatch from './NoMatch';
+import Login from './Login';
+import PrivateRoute from './PrivateRoute';
+import CheckRoute from './CheckRoute';
+import Logout from './Logout';
+import NewUser from './NewUser';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.dispatch(handleInitialData());
-  }
-
   render() {
-    const { authedUser, questionIds } = this.props;
+    const { authedUser } = this.props;
 
     return (
       <BrowserRouter>
         <div className="App">
           <LoadingBar />
-          {authedUser !== null
-            ? <div>
-                <Nav />
-                <UserInfo id={authedUser}/>
-                <Switch>
-                  <Route exact path='/' component={QuestionList} />
-                  <Route exact path='/add' component={NewQuestion} />
-                  <Route exact path='/leaderboard' component={Leaderboard} />
-                  <Route exact path='/questions/:id' render={({ match }) => {
-                    if (questionIds.includes(match.params.id)) {
-                      return <Question id={match.params.id}/>
-                    } else {
-                      return <NoMatch />
-                    }
-                  }} />
-                  <Route component={NoMatch} />
-                </Switch>
-              </div>
-            : null}
+          <Nav />
+          {authedUser !== null &&
+            <Fragment>
+              <UserInfo id={authedUser}/>
+              <Logout />
+            </Fragment>}
+          <Switch>
+            <PrivateRoute exact path='/' component={QuestionList} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/register' component={NewUser} />
+            <PrivateRoute exact path='/add' component={NewQuestion} />
+            <PrivateRoute exact path='/leaderboard' component={Leaderboard} />
+            <PrivateRoute exact path='/questions/:id' component={CheckRoute}/>
+            <Route component={NoMatch} />
+          </Switch>
         </div>
       </BrowserRouter>
     );
   }
 }
 
-function mapStateToProps({ authedUser, questions }) {
+function mapStateToProps({ authedUser }) {
   return {
-    authedUser,
-    questionIds: Object.keys(questions)
+    authedUser
   };
 }
 
