@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Row, Col } from 'react-bootstrap';
+import OptionStats from './OptionStats';
 
 class QuestionStats extends Component {
   render() {
@@ -7,18 +9,24 @@ class QuestionStats extends Component {
     const totalVotes = optionOne.votes.length + optionTwo.votes.length;
 
     return (
-      <div>
-        <div className={answer === 'optionOne' ? 'chosen-answer' : ''}>
-          {optionOne.text}
-          {optionOne.votes.length} votes
-          {optionOne.votes.length / totalVotes * 100} %
-        </div>
-        <div className={answer === 'optionTwo' ? 'chosen-answer' : ''}>
-          {optionTwo.text}
-          {optionTwo.votes.length} votes
-          {optionTwo.votes.length / totalVotes * 100} %
-        </div>
-      </div>
+      <Row>
+        <Col sm={6}>
+          <OptionStats
+            text={optionOne.text}
+            votes={optionOne.votes.length}
+            votePercent={optionOne.votes.length / totalVotes * 100}
+            selectedAnswer={answer === 'optionOne'}
+          />
+        </Col>
+        <Col sm={6}>
+          <OptionStats
+            text={optionTwo.text}
+            votes={optionTwo.votes.length}
+            votePercent={optionTwo.votes.length / totalVotes * 100}
+            selectedAnswer={answer === 'optionTwo'}
+          />
+        </Col>
+      </Row>
     );
   }
 }

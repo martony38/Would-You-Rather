@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleLogin } from '../actions/shared';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import {
+  Form,
+  Button,
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  PageHeader,
+  Grid,
+  Row,
+  Col
+} from 'react-bootstrap';
 
 class Login extends Component {
   state = {
@@ -31,29 +42,57 @@ class Login extends Component {
     }
 
     return (
-      <div>
-        Please login
-        <form onSubmit={this.handleSubmit}>
-          <input
-            onChange={this.handleChange}
-            name='username'
-            type='text'
-            placeholder='username'/>
-          <input
-            onChange={this.handleChange}
-            name='password'
-            type='password'
-            placeholder='password'/>
-          <button
-            type='submit'
-            disabled={username === '' || password === ''}>
-            Login
-          </button>
-        </form>
-        <Link to='/register'>
-          Register as new user
-        </Link>
-      </div>
+      <Grid>
+        <Row>
+          <Col sm={12}>
+            <PageHeader>
+              Please login
+            </PageHeader>
+          </Col>
+        </Row>
+        <Form horizontal onSubmit={this.handleSubmit}>
+          <FormGroup>
+            <Col componentClass={ControlLabel} sm={2}>
+              Username
+            </Col>
+            <Col sm={10}>
+              <FormControl
+                type='text'
+                name='username'
+                value={username}
+                placeholder='username'
+                onChange={this.handleChange}
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col componentClass={ControlLabel} sm={2}>
+              Password
+            </Col>
+            <Col sm={10}>
+              <FormControl
+                type='password'
+                name='password'
+                value={password}
+                placeholder='password'
+                onChange={this.handleChange}
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col smOffset={2} sm={10}>
+              <Button block
+                className='btn-shadow'
+                type='submit'
+                bsStyle="success"
+                disabled={username === '' || password === ''}
+              >
+                Login
+              </Button>
+            </Col>
+          </FormGroup>
+        </Form>
+      </Grid>
     );
   }
 }

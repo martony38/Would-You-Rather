@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import QuestionListItem from './QuestionListItem';
+import {
+  Button,
+  PageHeader,
+  Grid,
+  Row,
+  Col,
+  ListGroup
+} from 'react-bootstrap';
 
 class QuestionList extends Component {
   state = {
@@ -14,22 +22,39 @@ class QuestionList extends Component {
   };
 
   render() {
-    const questionIds = this.state.showAnswered
+    const { showAnswered } = this.state
+    const questionIds = showAnswered
       ? this.props.answeredQuestionIds
       : this.props.unansweredQuestionIds
 
     return (
-      <div>
-        <div onClick={this.toggleQuestions}>Show Answered/Not Answered</div>
+      <Grid>
+        <Row>
+          <Col md={12}>
+            <PageHeader>
+              Questions {showAnswered ? 'answered' : 'not answered'}
+              <Button
+                className='toggle-answers btn-shadow'
+                type='submit'
+                onClick={this.toggleQuestions}
+              >
+                Show {showAnswered ? 'not answered' : 'answered'}
+              </Button>
+            </PageHeader>
+          </Col>
+        </Row>
+
         {/* TODO: Show message 'congrats you answered all questions'*/}
-        <ul>
-          {questionIds.map((id) => (
-            <li key={id}>
-              <QuestionListItem id={id} />
-            </li>
-          ))}
-        </ul>
-      </div>
+        <Row>
+          <Col md={12}>
+            <ListGroup className='shadow'>
+              {questionIds.map((id) => (
+                <QuestionListItem key={id} id={id} />
+              ))}
+            </ListGroup>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
