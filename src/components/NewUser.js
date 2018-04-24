@@ -45,8 +45,7 @@ class NewUser extends Component {
   }
 
   handleAvatar = (e) => {
-    this.setState({ avatar: e.target.files[0] });
-    console.log(e.target.files[0]);
+    this.setState({ avatar: URL.createObjectURL(e.target.files[0]) });
   }
 
   render() {
