@@ -63,7 +63,7 @@ class NewQuestion extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col sm={5}>
-              <FormGroup controlId="formControlsTextarea">
+              <FormGroup>
                 <FormControl
                   className='text-center'
                   componentClass='textarea'
@@ -71,7 +71,7 @@ class NewQuestion extends Component {
                   value={optionOne}
                   name='optionOne'
                   onChange={this.handleChange}
-                  rows="2"
+                  rows='2'
                 />
               </FormGroup>
             </Col>
@@ -79,7 +79,7 @@ class NewQuestion extends Component {
               <div className='new-question-divider'>or</div>
             </Col>
             <Col sm={5}>
-              <FormGroup controlId="formControlsTextarea">
+              <FormGroup>
                 <FormControl
                   className='text-center'
                   componentClass='textarea'
@@ -87,7 +87,7 @@ class NewQuestion extends Component {
                   value={optionTwo}
                   name='optionTwo'
                   onChange={this.handleChange}
-                  rows="2"
+                  rows='2'
                 />
               </FormGroup>
             </Col>

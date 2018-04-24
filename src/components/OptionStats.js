@@ -21,7 +21,7 @@ class OptionStats extends Component {
           <div>{`${votes} vote${votes === 1 ? '' : 's'}`}</div>
           <div>{votePercent.toFixed()} %</div>
           {selectedAnswer === true &&
-            <div className="avatar-container">
+            <div className='avatar-container'>
               <Avatar id={authedUser}/>
             </div>}
         </Panel.Body>

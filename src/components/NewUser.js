@@ -86,7 +86,7 @@ class NewUser extends Component {
             </Col>
             <Col sm={10}>
               {/*<FormControl type='file' accept='.png, .jpg, .jpeg'/>*/}
-              <label className="btn btn-success btn-shadow btn-file">
+              <label className='btn btn-success btn-shadow btn-file'>
                 {avatar !== '' ? 'Select another...' : 'Browse...'}
                 <input
                   type='file'

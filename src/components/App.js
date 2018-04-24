@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
+        <div className='App'>
           <NavMenu />
           <Switch>
             <PrivateRoute exact path='/' component={QuestionList} />

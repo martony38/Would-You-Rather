@@ -15,7 +15,7 @@ class Notice extends Component {
       const noticeListPosition = element.parentElement.getBoundingClientRect();
       let left = noticePosition.left - noticeListPosition.left;
 
-      element.style.position = "relative";
+      element.style.position = 'relative';
 
       const animation = setInterval(flyOut, 2);
 
@@ -36,7 +36,7 @@ class Notice extends Component {
     const { dispatch } = this.props;
 
     this.myRef.current.addEventListener(
-      "animationend",
+      'animationend',
       () => {
         // Reset height of parent DOM element once animation is done to avoid
         // masking other elements on page.

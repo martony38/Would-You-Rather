@@ -86,7 +86,7 @@ class Login extends Component {
               <Button block
                 className='btn-shadow'
                 type='submit'
-                bsStyle="success"
+                bsStyle='success'
                 disabled={username === '' || password === ''}
               >
                 Login
