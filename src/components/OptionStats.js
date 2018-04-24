@@ -19,6 +19,7 @@ class OptionStats extends Component {
         </Panel.Heading>
         <Panel.Body>
           <div>{`${votes} vote${votes === 1 ? '' : 's'}`}</div>
+          {/* TODO: limit number of digits shown */}
           <div>{votePercent} %</div>
           {selectedAnswer === true &&
             <div className="avatar-container">
@@ -30,8 +31,19 @@ class OptionStats extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({ authedUser, questions }, { qid, option }) {
+  const question = questions[qid];
+  const text = question[option].text;
+  const votes = question[option].votes.length;
+  const totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
+  const votePercent = question[option].votes.length / totalVotes * 100;
+  const selectedAnswer = question[option].votes.includes(authedUser);
+
   return {
+    text,
+    votes,
+    votePercent,
+    selectedAnswer,
     authedUser
   };
 }

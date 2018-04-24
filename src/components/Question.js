@@ -7,8 +7,11 @@ import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
 
 class Question extends Component {
   render() {
-    const { author, optionOne, optionTwo, id } = this.props.question;
-    const { answered, authorName } = this.props;
+    const {
+      answered,
+      authorName,
+      question: { author, optionOne, optionTwo, id }
+    } = this.props;
 
     return (
       <Grid>
@@ -23,9 +26,13 @@ class Question extends Component {
             </PageHeader>
           </Col>
         </Row>
-        {answered === null
-          ? <Answer qid={id} optionOne={optionOne.text} optionTwo={optionTwo.text}/>
-          : <QuestionStats qid={id} answer={answered}/>}
+        {answered
+          ? <QuestionStats qid={id}/>
+          : <Answer
+              qid={id}
+              optionOne={optionOne.text}
+              optionTwo={optionTwo.text}
+            />}
       </Grid>
     );
   }
@@ -39,10 +46,7 @@ function mapStateToProps ({ authedUser, questions, users }, { id } ) {
     question,
     authorName,
     answered: question.optionOne.votes.includes(authedUser)
-      ? 'optionOne'
-      : question.optionTwo.votes.includes(authedUser)
-        ? 'optionTwo'
-        : null
+      || question.optionTwo.votes.includes(authedUser)
   };
 }
 
