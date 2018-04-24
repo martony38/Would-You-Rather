@@ -6,37 +6,45 @@ import { setNoticeListHeight } from '../actions/noticeList';
 class Notice extends Component {
   myRef = React.createRef();
 
-  closeNotice = (e) => {
+  closeNotice = () => {
     const { dispatch, notice } = this.props;
-    const element = e.target.parentElement
-    const noticePosition = element.getBoundingClientRect();
-    const noticeListPosition = element.parentElement.getBoundingClientRect();
-    let left = noticePosition.left - noticeListPosition.left;
+    const element = this.myRef.current;
 
-    element.style.position = "relative";
+    if (element !== null) {
+      const noticePosition = element.getBoundingClientRect();
+      const noticeListPosition = element.parentElement.getBoundingClientRect();
+      let left = noticePosition.left - noticeListPosition.left;
 
-    const animation = setInterval(flyOut, 2);
+      element.style.position = "relative";
 
-    function flyOut() {
-      if (left > noticeListPosition.right - noticeListPosition.left + 5) {
-        clearInterval(animation);
-        // Remove notice from store once animation is done.
-        dispatch(removeNotice(notice.id));
-      } else {
-        left += 5
-        element.style.left = left +'px';
+      const animation = setInterval(flyOut, 2);
+
+      function flyOut() {
+        if (left > noticeListPosition.right - noticeListPosition.left + 5) {
+          clearInterval(animation);
+          // Remove notice from store once animation is done.
+          dispatch(removeNotice(notice.id));
+        } else {
+          left += 5
+          element.style.left = left +'px';
+        }
       }
     }
   }
 
   componentDidMount() {
-    // Reset height of parent DOM element once animation is done to avoid
-    // masking other elements on page.
     const { dispatch } = this.props;
 
     this.myRef.current.addEventListener(
       "animationend",
-      () => dispatch(setNoticeListHeight('auto'))
+      () => {
+        // Reset height of parent DOM element once animation is done to avoid
+        // masking other elements on page.
+        dispatch(setNoticeListHeight('auto'));
+
+        // Remove notice after 5 seconds.
+        setTimeout(this.closeNotice, 5000);
+      }
     );
   }
 
