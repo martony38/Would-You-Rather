@@ -43,15 +43,17 @@ class QuestionList extends Component {
             </PageHeader>
           </Col>
         </Row>
-
-        {/* TODO: Show message 'congrats you answered all questions'*/}
         <Row>
           <Col md={12}>
-            <ListGroup className='shadow'>
-              {questionIds.map((id) => (
-                <QuestionListItem key={id} id={id} />
-              ))}
-            </ListGroup>
+            {questionIds.length > 0
+              ? <ListGroup className='shadow'>
+                  {questionIds.map((id) => (
+                    <QuestionListItem key={id} id={id} />
+                  ))}
+                </ListGroup>
+              : showAnswered
+                ? 'You have not answered any questions yet.'
+                : 'Congratulations you have answered all the questions.'}
           </Col>
         </Row>
       </Grid>
