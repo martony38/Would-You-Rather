@@ -34,7 +34,7 @@ class NewUser extends Component {
     const { name, username, password, avatar } = this.state;
     const { dispatch } = this.props;
 
-    dispatch(handleAddUser({ name, username, password, avatar}));
+    dispatch(handleAddUser({ name, username, password, avatar: avatar.url }));
   }
 
   validatePassword() {
@@ -45,7 +45,13 @@ class NewUser extends Component {
   }
 
   handleAvatar = (e) => {
-    this.setState({ avatar: URL.createObjectURL(e.target.files[0]) });
+    const avatarFile = e.target.files[0]
+    this.setState({
+      avatar: {
+        url: URL.createObjectURL(avatarFile),
+        file: avatarFile
+      }
+    });
   }
 
   render() {
@@ -95,7 +101,7 @@ class NewUser extends Component {
                   onChange={this.handleAvatar}
                 />
               </label>
-              <HelpBlock>{avatar !== '' ? 'Image selected: ' + avatar.name : 'Upload an image as your Avatar. Only accept .png, .jpg, and .jpeg files.'}</HelpBlock>
+              <HelpBlock>{avatar !== '' ? 'Image selected: ' + avatar.file.name : 'Upload an image as your Avatar. Only accept .png, .jpg, and .jpeg files.'}</HelpBlock>
             </Col>
           </FormGroup>
           <FormGroup>
