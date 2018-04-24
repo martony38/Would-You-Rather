@@ -33,6 +33,8 @@ export function handleAddUser({ name, username, password, avatar }) {
       avatar
     }).then((user) => {
         dispatch(addUser(user));
+      })
+      .then(() => {
         dispatch(hideLoading());
         dispatch(handleLogin(username, password));
       })
