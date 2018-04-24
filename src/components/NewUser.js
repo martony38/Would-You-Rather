@@ -74,6 +74,7 @@ class NewUser extends Component {
             <Col sm={10}>
               <FormControl
                 placeholder='John Doe'
+                autoComplete='name'
                 value={name}
                 name='name'
                 onChange={this.handleChange}
@@ -105,6 +106,7 @@ class NewUser extends Component {
             <Col sm={10}>
               <FormControl
                 placeholder='Username'
+                autoComplete='username'
                 value={username}
                 name='username'
                 onChange={this.handleChange}
@@ -119,6 +121,7 @@ class NewUser extends Component {
               <FormControl
                 type='password'
                 placeholder='Password'
+                autoComplete='new-password'
                 value={password}
                 name='password'
                 onChange={this.handleChange}
@@ -127,6 +130,7 @@ class NewUser extends Component {
                 className='verify-password'
                 type='password'
                 placeholder='Verify Password'
+                autoComplete='new-password'
                 value={verifyPassword}
                 name='verifyPassword'
                 onChange={this.handleChange}

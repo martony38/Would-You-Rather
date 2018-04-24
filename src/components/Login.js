@@ -61,6 +61,7 @@ class Login extends Component {
                 name='username'
                 value={username}
                 placeholder='username'
+                autoComplete='username'
                 onChange={this.handleChange}
               />
             </Col>
@@ -75,6 +76,7 @@ class Login extends Component {
                 name='password'
                 value={password}
                 placeholder='password'
+                autoComplete='current-password'
                 onChange={this.handleChange}
               />
             </Col>
