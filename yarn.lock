@@ -5640,6 +5640,10 @@ react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
+react-lifecycles-compat@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.2.tgz#7279047275bd727a912e25f734c0559527e84eff"
+
 react-overlays@^0.8.0:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.8.3.tgz#fad65eea5b24301cca192a169f5dddb0b20d3ac5"
@@ -5657,11 +5661,12 @@ react-prop-types@^0.4.0:
   dependencies:
     warning "^3.0.0"
 
-react-redux-loading@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-redux-loading/-/react-redux-loading-1.0.1.tgz#b03685c6c0304681b3097a27a3e6ee9b534fd699"
+react-redux-loading-bar@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/react-redux-loading-bar/-/react-redux-loading-bar-4.0.3.tgz#05db3444ba925d9129fd7d6cdb6998c49468133e"
   dependencies:
     prop-types "^15.5.6"
+    react-lifecycles-compat "^3.0.2"
 
 react-redux@^5.0.7:
   version "5.0.7"

@@ -1,7 +1,7 @@
 import { saveQuestion } from '../utils/api';
 import { saveQuestionAnswer } from '../utils/api';
 import { addNotice } from './notices';
-import { showLoading, hideLoading } from 'react-redux-loading';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';

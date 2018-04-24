@@ -4,7 +4,7 @@ import questions from './questions';
 import authedUser from './authedUser';
 import notices from './notices';
 import noticeList from './noticeList';
-import { loadingBarReducer } from 'react-redux-loading';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 import { LOGOUT_USER } from '../actions/authedUser';
 
 const appReducer = combineReducers({

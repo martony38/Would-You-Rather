@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import QuestionList from './QuestionList';
-import LoadingBar from 'react-redux-loading';
+import LoadingBar from 'react-redux-loading-bar';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
 import NoMatch from './NoMatch';
@@ -27,8 +27,7 @@ class App extends Component {
             <PrivateRoute exact path='/questions/:id' component={CheckRoute}/>
             <Route component={NoMatch} />
           </Switch>
-          {/* TODO: Use react-redux-loading-bar instead of react-redux-loading */}
-          <LoadingBar className='loading-bar'/>
+          <LoadingBar showFastActions className='loading-bar'/>
           <NoticeList />
         </div>
       </BrowserRouter>
