@@ -19,8 +19,7 @@ class OptionStats extends Component {
         </Panel.Heading>
         <Panel.Body>
           <div>{`${votes} vote${votes === 1 ? '' : 's'}`}</div>
-          {/* TODO: limit number of digits shown */}
-          <div>{votePercent} %</div>
+          <div>{votePercent.toFixed()} %</div>
           {selectedAnswer === true &&
             <div className="avatar-container">
               <Avatar id={authedUser}/>
