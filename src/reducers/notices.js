@@ -6,7 +6,7 @@ export default function notices(state = {}, action) {
       return {
         ...state,
         [action.notice.id]: action.notice
-      }
+      };
     case REMOVE_NOTICE :
       // Remove object property without mutating.
       // Inspired from :
@@ -14,7 +14,7 @@ export default function notices(state = {}, action) {
       // https://blog.ricardofilipe.com/post/immutable-changes-in-js)
       return Object.keys(state)
         .filter((id) => id !== action.id)
-        .reduce((acc, id) => ({...acc, [id]: state[id]}), {})
+        .reduce((acc, id) => ({...acc, [id]: state[id]}), {});
     default :
       return state;
   }
