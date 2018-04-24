@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleSignOutUser } from '../actions/authedUser';
+import {
+  Button
+} from 'react-bootstrap';
 
-class Logout extends Component {
+class SignOutButton extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -13,9 +16,9 @@ class Logout extends Component {
 
   render() {
     return (
-      <button onClick={this.handleSubmit}>
+      <Button bsStyle='danger' onClick={this.handleSubmit}>
         Sign out
-      </button>
+      </Button>
     );
   }
 }
@@ -26,4 +29,4 @@ function mapStateToProps({ authedUser }) {
   };
 }
 
-export default connect(mapStateToProps)(Logout);
+export default connect(mapStateToProps)(SignOutButton);

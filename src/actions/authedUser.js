@@ -1,4 +1,6 @@
 import { logoutUser } from '../utils/api';
+import { addNotice } from './notices';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 export const SET_AUTHED_USER = 'SET_AUTHED_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
@@ -11,12 +13,19 @@ export function signOutUser() {
 
 export function handleSignOutUser(id) {
   return (dispatch) => {
+    dispatch(showLoading());
+
     // Logout user from fake remote server.
     return logoutUser(id)
-      .then(() => dispatch(signOutUser()))
+      .then(() => {
+        dispatch(signOutUser());
+      })
+      .then(() => {
+        dispatch(addNotice('You are signed out.', 'success'));
+        dispatch(hideLoading());
+      })
       .catch((e) => {
-        // TODO: show info message to user
-        console.log('There was an error. Try Again.');
+        dispatch(addNotice('There was an error. Try Again.', 'danger'));
       });
   };
 };

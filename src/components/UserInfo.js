@@ -8,8 +8,10 @@ class UserInfo extends Component {
 
     return (
       <div>
-        <Avatar id={id}/>
         <span>{name}</span>
+        <div className='avatar-container'>
+          <Avatar id={id}/>
+        </div>
       </div>
     );
   }

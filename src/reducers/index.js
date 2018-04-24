@@ -2,13 +2,17 @@ import { combineReducers } from 'redux';
 import users from './users';
 import questions from './questions';
 import authedUser from './authedUser';
-import { loadingBarReducer } from 'react-redux-loading';
+import notices from './notices';
+import noticeList from './noticeList';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 import { LOGOUT_USER } from '../actions/authedUser';
 
 const appReducer = combineReducers({
   authedUser,
   users,
   questions,
+  notices,
+  noticeList,
   loadingBar: loadingBarReducer
 });
 

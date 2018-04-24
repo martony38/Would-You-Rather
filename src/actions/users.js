@@ -1,7 +1,7 @@
 import { saveUser } from '../utils/api';
 import { handleLogin } from './shared';
-import { showLoading, hideLoading } from 'react-redux-loading';
-
+import { addNotice } from './notices';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const ADD_USER = 'ADD_USER';
@@ -32,14 +32,13 @@ export function handleAddUser({ name, username, password, avatar }) {
       avatar
     }).then((user) => {
         dispatch(addUser(user));
-        dispatch(hideLoading());
+      })
+      .then(() => {
         dispatch(handleLogin(username, password));
       })
       .catch((e) => {
         dispatch(hideLoading());
-
-        // TODO: show info message to user
-        console.log('There was an error. Try Again.');
+        dispatch(addNotice('There was an error. Try Again.', 'danger'));
       });
   };
 }

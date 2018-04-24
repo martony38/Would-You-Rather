@@ -2,12 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddUser } from '../actions/users';
 import { Redirect } from 'react-router-dom';
+import {
+  Col,
+  FormGroup,
+  Button,
+  HelpBlock,
+  ControlLabel,
+  FormControl,
+  Form,
+  Grid,
+  Row,
+  PageHeader
+} from 'react-bootstrap';
 
 class NewUser extends Component {
   state = {
     name: '',
     username: '',
-    password: ''
+    password: '',
+    verifyPassword: '',
+    avatar: ''
   }
 
   handleChange = (e) => {
@@ -17,14 +31,26 @@ class NewUser extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, username, password } = this.state;
+    const { name, username, password, avatar } = this.state;
     const { dispatch } = this.props;
 
-    dispatch(handleAddUser({ name, username, password}));
+    dispatch(handleAddUser({ name, username, password, avatar}));
+  }
+
+  validatePassword() {
+    const { password, verifyPassword } = this.state;
+    if (password !== '' && verifyPassword !== '' && password !== verifyPassword) {
+      return 'error'
+    }
+  }
+
+  handleAvatar = (e) => {
+    this.setState({ avatar: e.target.files[0] });
+    console.log(e.target.files[0]);
   }
 
   render() {
-    const { name, username, password } = this.state;
+    const { name, username, password, verifyPassword, avatar } = this.state;
     const { from } = this.props.location.state || { from: { pathname: '/' } };
 
     if (this.props.authedUser !== null) {
@@ -32,37 +58,99 @@ class NewUser extends Component {
     }
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder='enter your name'
-            value={name}
-            name='name'
-            onChange={this.handleChange}
-          />
-          <input
-            type='file'
-          />
-          <input
-            placeholder='username'
-            value={username}
-            name='username'
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder='password'
-            value={password}
-            name='password'
-            type='password'
-            onChange={this.handleChange}
-          />
-          <button
-            type='submit'
-            disabled={username === '' || password === '' || name === ''}>
-            Submit
-          </button>
-        </form>
-      </div>
+      <Grid>
+        <Row>
+          <Col md={12}>
+            <PageHeader>
+              Register
+            </PageHeader>
+          </Col>
+        </Row>
+        <Form horizontal onSubmit={this.handleSubmit}>
+          <FormGroup>
+            <Col componentClass={ControlLabel} sm={2}>
+              Name
+            </Col>
+            <Col sm={10}>
+              <FormControl
+                placeholder='John Doe'
+                value={name}
+                name='name'
+                onChange={this.handleChange}
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col componentClass={ControlLabel} sm={2}>
+              Avatar
+            </Col>
+            <Col sm={10}>
+              {/*<FormControl type='file' accept='.png, .jpg, .jpeg'/>*/}
+              <label className="btn btn-success btn-shadow btn-file">
+                {avatar !== '' ? 'Select another...' : 'Browse...'}
+                <input
+                  type='file'
+                  accept='.png, .jpg, .jpeg'
+                  style={{display: 'none'}}
+                  onChange={this.handleAvatar}
+                />
+              </label>
+              <HelpBlock>{avatar !== '' ? 'Image selected: ' + avatar.name : 'Upload an image as your Avatar. Only accept .png, .jpg, and .jpeg files.'}</HelpBlock>
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col componentClass={ControlLabel} sm={2}>
+              Username
+            </Col>
+            <Col sm={10}>
+              <FormControl
+                placeholder='Username'
+                value={username}
+                name='username'
+                onChange={this.handleChange}
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup validationState={this.validatePassword()}>
+            <Col componentClass={ControlLabel} sm={2}>
+              Password
+            </Col>
+            <Col sm={10}>
+              <FormControl
+                type='password'
+                placeholder='Password'
+                value={password}
+                name='password'
+                onChange={this.handleChange}
+              />
+              <FormControl
+                className='verify-password'
+                type='password'
+                placeholder='Verify Password'
+                value={verifyPassword}
+                name='verifyPassword'
+                onChange={this.handleChange}
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col smOffset={2} sm={10}>
+              <Button block
+                bsStyle='primary'
+                className='btn-shadow'
+                type='submit'
+                disabled={username === ''
+                  || password === ''
+                  || name === ''
+                  || verifyPassword === ''
+                  || password !==  verifyPassword}
+              >
+                Sign Up
+              </Button>
+            </Col>
+          </FormGroup>
+        </Form>
+      </Grid>
     );
   }
 }

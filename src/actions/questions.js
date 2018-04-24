@@ -1,5 +1,7 @@
 import { saveQuestion } from '../utils/api';
 import { saveQuestionAnswer } from '../utils/api';
+import { addNotice } from './notices';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
@@ -22,16 +24,23 @@ function addQuestion(question) {
 export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
+    dispatch(showLoading());
 
     // Save question in fake remote server/database.
     return saveQuestion({
       optionOneText,
       optionTwoText,
       author: authedUser
-    }).then((question) => dispatch(addQuestion(question)))
+    }).then((question) => {
+        dispatch(addQuestion(question));
+      })
+      .then(() => {
+        dispatch(hideLoading());
+        dispatch(addNotice('Question added.', 'success'));
+      })
       .catch((e) => {
-        // TODO: show info message to user
-        console.log('There was an error. Try Again.');
+        dispatch(hideLoading());
+        dispatch(addNotice('There was an error. Try Again.', 'danger'));
       });
   };
 };
@@ -50,16 +59,23 @@ function answerQuestion(qid, authedUser, answer) {
 export function handleAnswerQuestion(qid, answer) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
+    dispatch(showLoading());
 
     // Save answer in fake remote server/database.
     return saveQuestionAnswer({
       qid,
       answer,
       authedUser
-    }).then(() => dispatch(answerQuestion(qid, authedUser, answer)))
+    }).then(() => {
+        dispatch(answerQuestion(qid, authedUser, answer));
+      })
+      .then(() => {
+        dispatch(hideLoading());
+        dispatch(addNotice('Question answered.', 'success'));
+      })
       .catch((e) => {
-        // TODO: show info message to user
-        console.log('There was an error. Try Again.');
+        dispatch(hideLoading());
+        dispatch(addNotice('There was an error. Try Again.', 'danger'));
       });
   };
 };
