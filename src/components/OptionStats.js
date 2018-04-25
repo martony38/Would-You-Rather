@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Panel } from 'react-bootstrap';
 import Avatar from './Avatar';
 
 class OptionStats extends Component {
+  static propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    votes: PropTypes.number.isRequired,
+    votePercent: PropTypes.number.isRequired,
+    selectedAnswer: PropTypes.bool.isRequired,
+    qid: PropTypes.string.isRequired,
+    option: PropTypes.string.isRequired
+  };
+
   render() {
     const { authedUser, text, votes, votePercent, selectedAnswer } = this.props;
 

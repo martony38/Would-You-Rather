@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { removeNotice } from '../actions/notices';
 import { setNoticeListHeight } from '../actions/noticeList';
 
 class Notice extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    notice: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired
+  };
+
   myRef = React.createRef();
 
   closeNotice = () => {

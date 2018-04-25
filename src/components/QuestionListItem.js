@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Avatar from './Avatar';
-import { formatDate } from '../utils/helpers';
+import PropTypes from 'prop-types';
 import { ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { formatDate } from '../utils/helpers';
+import Avatar from './Avatar';
 
 class QuestionListItem extends Component {
+  static propTypes = {
+    question: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired
+  };
+
   render() {
     const { question } = this.props
     const questionText = `${question.optionOne.text.substr(0,1).toUpperCase()

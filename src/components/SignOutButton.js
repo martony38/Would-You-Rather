@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleSignOutUser } from '../actions/authedUser';
+import PropTypes from 'prop-types';
 import {
   Button
 } from 'react-bootstrap';
+import { handleSignOutUser } from '../actions/authedUser';
 
 class SignOutButton extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    authedUser: PropTypes.string.isRequired
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();

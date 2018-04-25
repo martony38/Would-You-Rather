@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import {
   Navbar,
   Nav,
   NavItem,
   FormGroup
  } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 import Avatar from './Avatar';
 import SignOutButton from './SignOutButton';
 import SignInButton from './SignInButton';
 import SignUpButton from './SignUpButton';
 
 class NavMenu extends Component {
+  static propTypes = {
+    user: PropTypes.object,
+    location: PropTypes.object.isRequired
+  };
+
   render() {
     const { user, location } = this.props;
 
@@ -40,16 +46,16 @@ class NavMenu extends Component {
               </NavItem>
             </LinkContainer>
             {/* Links to test 404 page functionality
-            <LinkContainer to='/nowhere'>
-              <NavItem>
-                Link to Nowhere
-              </NavItem>
-            </LinkContainer>
-            <LinkContainer to='/questions/doesnotexist'>
-              <NavItem>
-                Link to non existing question
-              </NavItem>
-            </LinkContainer>
+              <LinkContainer to='/nowhere'>
+                <NavItem>
+                  Link to Nowhere
+                </NavItem>
+              </LinkContainer>
+              <LinkContainer to='/questions/doesnotexist'>
+                <NavItem>
+                  Link to non existing question
+                </NavItem>
+              </LinkContainer>
             */}
           </Nav>
           {user === null

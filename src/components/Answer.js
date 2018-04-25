@@ -1,13 +1,21 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { handleAnswerQuestion } from '../actions/questions';
+import PropTypes from 'prop-types';
 import {
   Button,
   Row,
   Col
 } from 'react-bootstrap';
+import { handleAnswerQuestion } from '../actions/questions';
 
 class Answer extends Component {
+  static propTypes = {
+    optionOne: PropTypes.string.isRequired,
+    optionTwo: PropTypes.string.isRequired,
+    qid: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired
+  };
+
   state = {
     answer: null
   }

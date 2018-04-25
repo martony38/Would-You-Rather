@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import Page404 from './Page404';
 
 const QUESTION_404 = '04d7hff20vs7mm0cucr9tyd';
 
 class NoMatch extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    answered: PropTypes.string,
+    authenticated: PropTypes.bool.isRequired
+  };
+
   render() {
     const { id, answered, authenticated } = this.props;
 

@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import defaultAvatar from '../img/default_avatar.jpg';
+import PropTypes from 'prop-types';
 import { Image } from 'react-bootstrap';
+import defaultAvatar from '../img/default_avatar.jpg';
 
 class Avatar extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  };
+
   render() {
     let { avatar, name } = this.props;
     if (avatar === '') {

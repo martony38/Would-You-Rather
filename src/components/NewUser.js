@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleAddUser } from '../actions/users';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import {
   Col,
@@ -14,8 +14,15 @@ import {
   Row,
   PageHeader
 } from 'react-bootstrap';
+import { handleAddUser } from '../actions/users';
 
 class NewUser extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    location: PropTypes.object.isRequired,
+    authedUser: PropTypes.string
+  };
+
   state = {
     name: '',
     username: '',

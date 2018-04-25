@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleAddQuestion } from '../actions/questions';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import {
   Button,
@@ -12,8 +12,13 @@ import {
   Form,
   PageHeader
 } from 'react-bootstrap';
+import { handleAddQuestion } from '../actions/questions';
 
 class NewQuestion extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired
+  };
+
   state = {
     optionOne: '',
     optionTwo: '',
@@ -98,7 +103,8 @@ class NewQuestion extends Component {
                 bsStyle='primary'
                 className='btn-shadow'
                 type='submit'
-                disabled={optionOne === '' || optionTwo === ''}>
+                disabled={optionOne === '' || optionTwo === ''}
+              >
                 Submit
               </Button>
             </Col>

@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Notice from './Notice';
 
 class NoticeList extends Component {
+  static propTypes = {
+    noticeIds: PropTypes.array.isRequired,
+    height: PropTypes.string.isRequired
+  };
+
   render() {
     const { noticeIds, height } = this.props;
 

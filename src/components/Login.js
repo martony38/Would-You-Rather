@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleLogin } from '../actions/shared';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import {
   Form,
@@ -13,8 +13,15 @@ import {
   Row,
   Col
 } from 'react-bootstrap';
+import { handleLogin } from '../actions/shared';
 
 class Login extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    location: PropTypes.object.isRequired,
+    authedUser: PropTypes.string
+  };
+
   state = {
     username: '',
     password: ''

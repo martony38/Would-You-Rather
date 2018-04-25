@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import QuestionListItem from './QuestionListItem';
+import PropTypes from 'prop-types';
 import {
   Button,
   PageHeader,
@@ -9,8 +9,14 @@ import {
   Col,
   ListGroup
 } from 'react-bootstrap';
+import QuestionListItem from './QuestionListItem';
 
 class QuestionList extends Component {
+  static propTypes = {
+    answeredQuestionIds: PropTypes.array.isRequired,
+    unansweredQuestionIds: PropTypes.array.isRequired
+  };
+
   state = {
     showAnswered: false
   }
@@ -22,10 +28,11 @@ class QuestionList extends Component {
   };
 
   render() {
-    const { showAnswered } = this.state
+    const { answeredQuestionIds, unansweredQuestionIds } = this.props;
+    const { showAnswered } = this.state;
     const questionIds = showAnswered
-      ? this.props.answeredQuestionIds
-      : this.props.unansweredQuestionIds
+      ? answeredQuestionIds
+      : unansweredQuestionIds;
 
     return (
       <Grid>

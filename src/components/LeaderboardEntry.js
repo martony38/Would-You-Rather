@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Badge } from 'react-bootstrap';
 import Avatar from './Avatar';
 import goldMedal from '../img/gold-medal.png';
@@ -8,6 +9,12 @@ import bronzeMedal from '../img/bronze-medal.png';
 import defaultMedal from '../img/default-medal.png';
 
 class LeaderboardEntry extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
+    rank: PropTypes.number.isRequired
+  };
+
   medalType(rank) {
     switch (rank) {
       case 1 :

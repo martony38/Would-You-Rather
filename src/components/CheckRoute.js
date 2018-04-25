@@ -1,24 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Question from './Question';
 import NoMatch from './NoMatch';
 
+const CheckRoute = ({ questionIds, id }) => {
+  return (
+    // If url does not contain a valid question id, display 404 page.
+    questionIds.includes(id)
+      ? <Question id={id}/>
+      : <NoMatch />
+  );
+};
 
-class CheckRoute extends Component {
-  render() {
-    const { questionIds, id } = this.props;
+CheckRoute.propTypes = {
+  questionIds: PropTypes.array.isRequired,
+  id: PropTypes.string.isRequired,
+  match: PropTypes.object.isRequired
+};
 
-    return (
-      // If url does not contain a valid question id, display 404 page.
-      questionIds.includes(id)
-        ? <Question id={id}/>
-        : <NoMatch />
-    );
-  }
-}
-
-function mapStateToProps({ questions }, props) {
-  const { id } = props.match.params;
+function mapStateToProps({ questions }, { match }) {
+  const { id } = match.params;
 
   return {
     id,

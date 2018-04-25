@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
 import Avatar from './Avatar';
 import Answer from './Answer';
 import QuestionStats from './QuestionStats';
-import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
 
 class Question extends Component {
+  static propTypes = {
+    answered: PropTypes.bool.isRequired,
+    authorName: PropTypes.string.isRequired,
+    question: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired
+  };
+
   render() {
     const {
       answered,
