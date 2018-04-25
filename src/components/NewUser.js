@@ -72,7 +72,7 @@ class NewUser extends Component {
     return (
       <Grid>
         <Row>
-          <Col md={12}>
+          <Col sm={12}>
             <PageHeader>
               Register
             </PageHeader>

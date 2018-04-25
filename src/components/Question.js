@@ -24,7 +24,7 @@ class Question extends Component {
     return (
       <Grid>
         <Row>
-          <Col md={12}>
+          <Col sm={12}>
             <PageHeader className='text-center'>
               <div className='avatar-container question-avatar'>
                 <Avatar id={author}/>

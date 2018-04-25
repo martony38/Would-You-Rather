@@ -37,7 +37,7 @@ class QuestionList extends Component {
     return (
       <Grid>
         <Row>
-          <Col md={12}>
+          <Col sm={12}>
             <PageHeader>
               Questions {showAnswered ? 'answered' : 'not answered'}
               <Button
@@ -51,7 +51,7 @@ class QuestionList extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md={12}>
+          <Col sm={12}>
             {questionIds.length > 0
               ? <ListGroup className='shadow'>
                   {questionIds.map((id) => (

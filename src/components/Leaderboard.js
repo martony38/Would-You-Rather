@@ -14,7 +14,7 @@ const Leaderboard = ({ users }) => {
   return (
     <Grid>
       <Row>
-        <Col md={12}>
+        <Col sm={12}>
           <PageHeader>
             Leaderboard
           </PageHeader>

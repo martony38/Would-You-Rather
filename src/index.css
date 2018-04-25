@@ -40,6 +40,11 @@ textarea {
 .navbar-user-info {
   margin-bottom: 0px;
   margin-top: 0px;
+  padding-left: 0px;
+}
+
+.navbar-form {
+  padding-right: 0px;
 }
 
 /* Avatar */
