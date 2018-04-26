@@ -7,6 +7,8 @@ import {
   Navbar,
   Nav,
   NavItem,
+  NavDropdown,
+  MenuItem,
   FormGroup
  } from 'react-bootstrap';
 import Avatar from './Avatar';
@@ -42,25 +44,22 @@ class NavMenu extends Component {
             </LinkContainer>
             <LinkContainer to='/add'>
               <NavItem>
-                Add a question
+                Add question
               </NavItem>
             </LinkContainer>
-            {/* Links to test 404 page functionality
-              <LinkContainer to='/nowhere'>
-                <NavItem>
-                  Link to Nowhere
-                </NavItem>
-              </LinkContainer>
-              <LinkContainer to='/questions/doesnotexist'>
-                <NavItem>
-                  Link to non existing question
-                </NavItem>
-              </LinkContainer>
-            */}
+            {/* Links to test 404 page functionality */}
+              <NavDropdown title='404' id='bad-links-dropdown'>
+                <LinkContainer to='/wrong-url'>
+                  <MenuItem>Wrong link</MenuItem>
+                </LinkContainer>
+                <LinkContainer to='/questions/doesnotexist'>
+                  <MenuItem>Bad qid</MenuItem>
+                </LinkContainer>
+              </NavDropdown>
           </Nav>
           {user === null
             ? <Navbar.Form pullRight>
-                {location.pathname === '/register' ? <SignInButton /> : <SignUpButton />}
+                {location.pathname !== '/login' ? <SignInButton /> : <SignUpButton />}
               </Navbar.Form>
             : <Navbar.Form pullRight className='navbar-user-info'>
                 <FormGroup className='user-info'>
