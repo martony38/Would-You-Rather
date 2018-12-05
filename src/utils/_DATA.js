@@ -1,192 +1,235 @@
+import trumpAvatar from "../img/trump.jpeg";
+
 let users = {
   wouldyouratherapp: {
-    id: 'wouldyouratherapp',
-    name: 'Would You Rather App',
-    avatarURL: 'http://www.placecage.com/c/200/200',
+    id: "wouldyouratherapp",
+    name: "Would You Rather App",
+    avatarURL: "http://www.placecage.com/c/200/200",
     answers: {},
-    questions: ['04d7hff20vs7mm0cucr9tyd'],
-    password: 'password'
+    questions: ["04d7hff20vs7mm0cucr9tyd"],
+    password: "password"
+  },
+  donaldtrump: {
+    id: "donaldtrump",
+    name: "Donald Trump",
+    avatarURL: trumpAvatar,
+    answers: {},
+    questions: ["in88kd19131or2xz7h9d3", "hc4ptx3gs796vears0yprt"],
+    password: "password"
   },
   sarahedo: {
-    id: 'sarahedo',
-    name: 'Sarah Edo',
-    avatarURL: 'http://www.placecage.com/200/200',
+    id: "sarahedo",
+    name: "Sarah Edo",
+    avatarURL: "http://www.placecage.com/200/200",
     answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionOne',
-      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-      "loxhs1bqm25b708cmbf3g": 'optionTwo'
+      "8xf0y6ziyjabvozdd253nd": "optionOne",
+      "6ni6ok3ym7mf1p33lnez": "optionOne",
+      am8ehyc8byjqgar0jgpub9: "optionTwo",
+      loxhs1bqm25b708cmbf3g: "optionTwo"
     },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9'],
-    password: 'password'
+    questions: ["8xf0y6ziyjabvozdd253nd", "am8ehyc8byjqgar0jgpub9"],
+    password: "password"
   },
   tylermcginnis: {
-    id: 'tylermcginnis',
-    name: 'Tyler McGinnis',
-    avatarURL: 'http://fillmurray.com/200/200',
+    id: "tylermcginnis",
+    name: "Tyler McGinnis",
+    avatarURL: "http://fillmurray.com/200/200",
     answers: {
-      "vthrdm985a262al8qx3do": 'optionOne',
-      "xj352vofupe1dqz9emx13r": 'optionTwo'
+      vthrdm985a262al8qx3do: "optionOne",
+      xj352vofupe1dqz9emx13r: "optionTwo"
     },
-    questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
-    password: 'password'
+    questions: ["loxhs1bqm25b708cmbf3g", "vthrdm985a262al8qx3do"],
+    password: "password"
   },
   johndoe: {
-    id: 'johndoe',
-    name: 'John Doe',
-    avatarURL: 'https://placebear.com/200/200',
+    id: "johndoe",
+    name: "John Doe",
+    avatarURL: "https://placebear.com/200/200",
     answers: {
-      "xj352vofupe1dqz9emx13r": 'optionOne',
-      "vthrdm985a262al8qx3do": 'optionTwo',
-      "6ni6ok3ym7mf1p33lnez": 'optionOne'
+      xj352vofupe1dqz9emx13r: "optionOne",
+      vthrdm985a262al8qx3do: "optionTwo",
+      "6ni6ok3ym7mf1p33lnez": "optionOne"
     },
-    questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
-    password: 'password'
+    questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
+    password: "password"
   }
-}
+};
 
 let questions = {
-  "04d7hff20vs7mm0cucr9tyd": {
-    id: '04d7hff20vs7mm0cucr9tyd',
-    author: 'wouldyouratherapp',
+  in88kd19131or2xz7h9d3: {
+    id: "in88kd19131or2xz7h9d3",
+    author: "donaldtrump",
     timestamp: 1523542358144,
     optionOne: {
       votes: [],
-      text: 'see a 404 error page',
+      text: "Send Hillary Clinton to jail"
     },
     optionTwo: {
       votes: [],
-      text: 'be silently redirected to the homepage'
+      text: "Send Ivanka Trump to jail"
+    }
+  },
+  hc4ptx3gs796vears0yprt: {
+    id: "hc4ptx3gs796vears0yprt",
+    author: "donaldtrump",
+    timestamp: 1523542358144,
+    optionOne: {
+      votes: [],
+      text: "make America great again"
+    },
+    optionTwo: {
+      votes: [],
+      text: "vote for him in 2020"
+    }
+  },
+  "04d7hff20vs7mm0cucr9tyd": {
+    id: "04d7hff20vs7mm0cucr9tyd",
+    author: "wouldyouratherapp",
+    timestamp: 1523542358144,
+    optionOne: {
+      votes: [],
+      text: "see a 404 error page"
+    },
+    optionTwo: {
+      votes: [],
+      text: "be silently redirected to the homepage"
     }
   },
   "8xf0y6ziyjabvozdd253nd": {
-    id: '8xf0y6ziyjabvozdd253nd',
-    author: 'sarahedo',
+    id: "8xf0y6ziyjabvozdd253nd",
+    author: "sarahedo",
     timestamp: 1467166872634,
     optionOne: {
-      votes: ['sarahedo'],
-      text: 'have horrible short term memory',
+      votes: ["sarahedo"],
+      text: "have horrible short term memory"
     },
     optionTwo: {
       votes: [],
-      text: 'have horrible long term memory'
+      text: "have horrible long term memory"
     }
   },
   "6ni6ok3ym7mf1p33lnez": {
-    id: '6ni6ok3ym7mf1p33lnez',
-    author: 'johndoe',
+    id: "6ni6ok3ym7mf1p33lnez",
+    author: "johndoe",
     timestamp: 1468479767190,
     optionOne: {
       votes: [],
-      text: 'become a superhero',
+      text: "become a superhero"
     },
     optionTwo: {
-      votes: ['johndoe', 'sarahedo'],
-      text: 'become a supervillian'
+      votes: ["johndoe", "sarahedo"],
+      text: "become a supervillain"
     }
   },
-  "am8ehyc8byjqgar0jgpub9": {
-    id: 'am8ehyc8byjqgar0jgpub9',
-    author: 'sarahedo',
+  am8ehyc8byjqgar0jgpub9: {
+    id: "am8ehyc8byjqgar0jgpub9",
+    author: "sarahedo",
     timestamp: 1488579767190,
     optionOne: {
       votes: [],
-      text: 'be telekinetic',
+      text: "be telekinetic"
     },
     optionTwo: {
-      votes: ['sarahedo'],
-      text: 'be telepathic'
+      votes: ["sarahedo"],
+      text: "be telepathic"
     }
   },
-  "loxhs1bqm25b708cmbf3g": {
-    id: 'loxhs1bqm25b708cmbf3g',
-    author: 'tylermcginnis',
+  loxhs1bqm25b708cmbf3g: {
+    id: "loxhs1bqm25b708cmbf3g",
+    author: "tylermcginnis",
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
-      text: 'be a front-end developer',
+      text: "be a front-end developer"
     },
     optionTwo: {
-      votes: ['sarahedo'],
-      text: 'be a back-end developer'
+      votes: ["sarahedo"],
+      text: "be a back-end developer"
     }
   },
-  "vthrdm985a262al8qx3do": {
-    id: 'vthrdm985a262al8qx3do',
-    author: 'tylermcginnis',
+  vthrdm985a262al8qx3do: {
+    id: "vthrdm985a262al8qx3do",
+    author: "tylermcginnis",
     timestamp: 1489579767190,
     optionOne: {
-      votes: ['tylermcginnis'],
-      text: 'find $50 yourself',
+      votes: ["tylermcginnis"],
+      text: "find $50 yourself"
     },
     optionTwo: {
-      votes: ['johndoe'],
-      text: 'have your best friend find $500'
+      votes: ["johndoe"],
+      text: "have your best friend find $500"
     }
   },
-  "xj352vofupe1dqz9emx13r": {
-    id: 'xj352vofupe1dqz9emx13r',
-    author: 'johndoe',
+  xj352vofupe1dqz9emx13r: {
+    id: "xj352vofupe1dqz9emx13r",
+    author: "johndoe",
     timestamp: 1493579767190,
     optionOne: {
-      votes: ['johndoe'],
-      text: 'write JavaScript',
+      votes: ["johndoe"],
+      text: "write JavaScript"
     },
     optionTwo: {
-      votes: ['tylermcginnis'],
-      text: 'write Swift'
+      votes: ["tylermcginnis"],
+      text: "write Swift"
     }
-  },
+  }
+};
+
+function generateUID() {
+  return (
+    Math.random()
+      .toString(36)
+      .substring(2, 15) +
+    Math.random()
+      .toString(36)
+      .substring(2, 15)
+  );
 }
 
-function generateUID () {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-}
-
-export function _getUsers () {
+export function _getUsers() {
   return new Promise((res, rej) => {
-    setTimeout(() => res({...users}), 1000)
-  })
+    setTimeout(() => res({ ...users }), 6000);
+  });
 }
 
-export function _getQuestions () {
+export function _getQuestions() {
   return new Promise((res, rej) => {
-    setTimeout(() => res({...questions}), 1000)
-  })
+    setTimeout(() => res({ ...questions }), 4000);
+  });
 }
 
-function formatQuestion ({ optionOneText, optionTwoText, author }) {
+function formatQuestion({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
     author,
     optionOne: {
       votes: [],
-      text: optionOneText,
+      text: optionOneText
     },
     optionTwo: {
       votes: [],
-      text: optionTwoText,
+      text: optionTwoText
     }
-  }
+  };
 }
 
-export function _saveQuestion (question) {
+export function _saveQuestion(question) {
   return new Promise((res, rej) => {
-    const formattedQuestion = formatQuestion(question)
+    const formattedQuestion = formatQuestion(question);
 
     setTimeout(() => {
       questions = {
         ...questions,
         [formattedQuestion.id]: formattedQuestion
-      }
+      };
 
-      res(formattedQuestion)
-    }, 1000)
-  })
+      res(formattedQuestion);
+    }, 3000);
+  });
 }
 
-export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer({ authedUser, qid, answer }) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -198,7 +241,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
             [qid]: answer
           }
         }
-      }
+      };
 
       questions = {
         ...questions,
@@ -209,27 +252,25 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
             votes: questions[qid][answer].votes.concat([authedUser])
           }
         }
-      }
+      };
 
-      res()
-    }, 500)
-  })
+      res();
+    }, 2500);
+  });
 }
 
 // Mock authentication
 export function _checkCredentials(username, password) {
-  const user = Object.keys(users).includes(username)
-    ? users[username]
-    : false;
+  const user = Object.keys(users).includes(username) ? users[username] : false;
   return user ? password === user.password : false;
 }
 
-function formatUser ({ username, name, password, avatar }) {
+function formatUser({ username, name, password, avatar }) {
   return {
     id: username,
     name,
     password,
-    avatarURL: avatar || '',
+    avatarURL: avatar || "",
     answers: {},
     questions: []
   };
@@ -243,18 +284,17 @@ export function _saveUser(user) {
       users = {
         ...users,
         [formattedUser.id]: formattedUser
-      }
+      };
 
-      res(formattedUser)
-    }, 1000);
+      res(formattedUser);
+    }, 5000);
   });
-};
+}
 
 export function _logoutUser(id) {
   return new Promise((res, rej) => {
-
     setTimeout(() => {
-      res()
-    }, 500);
+      res();
+    }, 1500);
   });
-};
+}

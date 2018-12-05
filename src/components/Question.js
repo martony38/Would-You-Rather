@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
-import Avatar from './Avatar';
-import Answer from './Answer';
-import QuestionStats from './QuestionStats';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { Grid, Row, Col, PageHeader } from "react-bootstrap";
+import Avatar from "./Avatar";
+import Answer from "./Answer";
+import QuestionStats from "./QuestionStats";
 
 class Question extends Component {
   static propTypes = {
@@ -22,39 +22,44 @@ class Question extends Component {
     } = this.props;
 
     return (
-      <Grid>
+      <Grid className="main-content">
         <Row>
           <Col sm={12}>
-            <PageHeader className='text-center'>
-              <div className='avatar-container question-avatar'>
-                <Avatar id={author}/>
+            <PageHeader className="text-center">
+              <div className="avatar-container question-avatar">
+                <Avatar id={author} />
               </div>
-              <div><small>{authorName}</small></div>
+              <div>
+                <small>{authorName}</small>
+              </div>
               <div>wants to know if you would rather...</div>
             </PageHeader>
           </Col>
         </Row>
-        {answered
-          ? <QuestionStats qid={id}/>
-          : <Answer
-              qid={id}
-              optionOne={optionOne.text}
-              optionTwo={optionTwo.text}
-            />}
+        {answered ? (
+          <QuestionStats qid={id} />
+        ) : (
+          <Answer
+            qid={id}
+            optionOne={optionOne.text}
+            optionTwo={optionTwo.text}
+          />
+        )}
       </Grid>
     );
   }
 }
 
-function mapStateToProps ({ authedUser, questions, users }, { id } ) {
+function mapStateToProps({ authedUser, questions, users }, { id }) {
   const question = questions[id];
-  const authorName = users[question.author].name
+  const authorName = users[question.author].name;
 
   return {
     question,
     authorName,
-    answered: question.optionOne.votes.includes(authedUser)
-      || question.optionTwo.votes.includes(authedUser)
+    answered:
+      question.optionOne.votes.includes(authedUser) ||
+      question.optionTwo.votes.includes(authedUser)
   };
 }
 

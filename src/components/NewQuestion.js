@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 import {
   Button,
   FormControl,
@@ -11,8 +11,8 @@ import {
   Col,
   Form,
   PageHeader
-} from 'react-bootstrap';
-import { handleAddQuestion } from '../actions/questions';
+} from "react-bootstrap";
+import { handleAddQuestion } from "../actions/questions";
 
 class NewQuestion extends Component {
   static propTypes = {
@@ -20,16 +20,16 @@ class NewQuestion extends Component {
   };
 
   state = {
-    optionOne: '',
-    optionTwo: '',
+    optionOne: "",
+    optionTwo: "",
     toHome: false
-  }
+  };
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     const { optionOne, optionTwo } = this.state;
@@ -38,74 +38,74 @@ class NewQuestion extends Component {
     dispatch(handleAddQuestion(optionOne, optionTwo));
 
     this.setState({
-      optionOne: '',
-      optionTwo: '',
+      optionOne: "",
+      optionTwo: "",
       toHome: true
     });
-  }
+  };
 
   render() {
     const { optionOne, optionTwo, toHome } = this.state;
 
     if (toHome === true) {
-      return <Redirect to='/' />
+      return <Redirect to="/" />;
     }
 
     return (
-      <Grid>
+      <Grid className="main-content">
         <Row>
           <Col sm={12}>
-            <PageHeader>
-              Add a new question
-            </PageHeader>
+            <PageHeader>Add a new question</PageHeader>
           </Col>
         </Row>
         <Row>
           <Col sm={12}>
-            <h2 className='text-center'>Would you rather...</h2>
+            <h2 className="text-center">Would you rather...</h2>
           </Col>
         </Row>
         <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col sm={5}>
-              <FormGroup>
+              <FormGroup className="new-question-answer">
                 <FormControl
-                  className='text-center'
-                  componentClass='textarea'
-                  placeholder='Enter text of first option here'
+                  className="text-center new-question-text"
+                  componentClass="textarea"
+                  placeholder="Do something..."
                   value={optionOne}
-                  name='optionOne'
+                  name="optionOne"
                   onChange={this.handleChange}
-                  rows='2'
+                  rows="2"
                 />
               </FormGroup>
             </Col>
-            <Col sm={2} className='text-center'>
-              <div className='new-question-divider'>or</div>
+            <Col sm={2} className="text-center">
+              <div className="new-question-divider">or</div>
             </Col>
             <Col sm={5}>
-              <FormGroup>
+              <FormGroup className="new-question-answer">
                 <FormControl
-                  className='text-center'
-                  componentClass='textarea'
-                  placeholder='Enter text of second option here'
+                  className="text-center new-question-text"
+                  componentClass="textarea"
+                  placeholder="Do something else..."
                   value={optionTwo}
-                  name='optionTwo'
+                  name="optionTwo"
                   onChange={this.handleChange}
-                  rows='2'
+                  rows="2"
                 />
               </FormGroup>
             </Col>
           </Row>
           <Row>
             <Col sm={12}>
-              <Button block
-                bsStyle='primary'
-                className='btn-shadow'
-                type='submit'
-                disabled={optionOne === '' || optionTwo === ''}
+              <Button
+                block
+                bsStyle="primary"
+                bsSize="large"
+                className="btn-shadow "
+                type="submit"
+                disabled={optionOne === "" || optionTwo === ""}
               >
-                Submit
+                Submit Question
               </Button>
             </Col>
           </Row>
